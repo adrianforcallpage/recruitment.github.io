@@ -1,0 +1,12 @@
+.divider {
+	margin: 0 20px;
+}
+
+.list-style {
+	list-style-type: none;
+}
+
+.checkbox-style {
+	float: right; 
+	margin-top: 7px;
+}
