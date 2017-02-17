@@ -26,32 +26,12 @@ function listController(listFactory, $scope) {
         for(var i = 0; i < data.length; ++i) {
             var obj = data[i];
             var continentObj = {name: obj.name, region: obj.region, checked: false};
- 
-            
-            if (obj.region === 'Africa') {
-                $scope.continents[0].countrys.push(continentObj);
+ 		for(var j = 0; j < $scope.continents.length; j++) {
+			if($scope.continents[j].name === continentObj.region) {
+				$scope.continents[j].countrys.push(continentObj)
+			}
+		}
             }
-
-            else if (obj.region === 'Americas') {
-                $scope.continents[1].countrys.push(continentObj);
-            } 
-
-            else if (obj.region === 'Asia') {
-                $scope.continents[2].countrys.push(continentObj);
-            } 
-
-            else if (obj.region === 'Europe') {
-                $scope.continents[3].countrys.push(continentObj);
-            } 
-
-            else if (obj.region === 'Oceania') {
-                $scope.continents[4].countrys.push(continentObj);
-            } 
-
-            else if (obj.region === 'Polar') {
-                $scope.continents[5].countrys.push(continentObj);
-            }
-        }
     });
 
 	$scope.checkAll = function() {
