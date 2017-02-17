@@ -1,9 +1,11 @@
 <html ng-app="countryApp">
 	<head>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
 		<link rel="stylesheet" href="css/style.css">
 	</head>
-	<body ng-controller="listController">
+	<body ng-controller="listController as ctrl">
+		
 		<div class="well">
 			<label for="input">Seach for country</label>
 			<input type="text" class="" id="input" ng-model="search">
@@ -11,17 +13,22 @@
 			<label for="checkbox">See checked/unchecked</label>
 			<input type="checkbox" name="" id="checkbox" ng-model="check">
 		</div>
-		<ul class="list-style">
-			<li ng-repeat="continent in continents">
-				<div style="width: 150px;">
-					<input type="checkbox" class="checkbox-style" ng-model="continent.selected" ng-click="checkAll(continent)">
-					<h3>{{continent.name}}</h3>
+		<div class="" style="margin-left: 15px;">
+			<div ng-repeat="continent in ctrl.continents">
+				<div style="margin: 15px 0 15px 0;">
+					<span style="float: left"><input type="checkbox" ng-click="ctrl.checkAll(continent)" ng-model="continent.selected"></span>
+					<span style="margin-left: 10px;">
+						<div class="continent-name" style="font-weight: bold; margin-left: 23px;">{{continent.name}}</div>
+					</span>
 				</div>
-				<ul class="list-style">
-					<li ng-hide="check && country.checked" ng-repeat="country in continent.countrys | filter:search"><input type="checkbox" ng-change="changeIfAllChecked(country)" ng-model="country.checked"> {{country.name}}</li>
-				</ul>
-			</li>
-		</ul>
+				<div ng-repeat="country in continent.countrys">
+					<div class="single-country" ng-hide="check && country.checked">
+						<input type="checkbox" ng-model="country.checked" ng-change="ctrl.checkContinentIfAllChecked(country)">
+						<span style="margin-left: 10px">{{country.name}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
 		<script src="libs/angular.min.js"></script>
 		<script src="vendors/angular-resource.min.js"></script>
 		<script src="js/app.js"></script>
@@ -29,3 +36,5 @@
 		<script src="js/services/countryApp.services.js"></script>
 	</body>
 </html>
+
+
