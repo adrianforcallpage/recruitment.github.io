@@ -66,9 +66,9 @@ function listController(listFactory, $scope) {
 		})
 
 		if(bool) {
-			$scope.checkbox[index].selected = true;
+			continent.selected = true;
 		} else if(!bool){
-			$scope.checkbox[index].selected = false;
+			continent.selected = false;
 		}
 	}	
 
