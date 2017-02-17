@@ -25,7 +25,7 @@ function listController(listFactory, $scope) {
         } 
     })
 
-    $scope.selectAll = function (continent) {
+    $scope.checkAll = function (continent) {
         if(continent.selected) {
             for(var i = 0; i < $scope.continents.length; i++) {
                 if($scope.continents[i].name.toLowerCase() === continent.name.toLowerCase()) {
