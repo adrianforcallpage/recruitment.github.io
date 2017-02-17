@@ -27,8 +27,7 @@ function listController(listFactory, $scope) {
             var obj = data[i],
                 newObj = {name: obj.name, region: obj.region, checked: false}    
             for(var j = 0; j < $scope.continents.length; j++) {
-                if($scope.continents[j].name.toLowerCase() == newObj.region.toLowerCase()) {
-
+                if($scope.continents[j].name.toLowerCase() === newObj.region.toLowerCase()) {
                     $scope.continents[j].countrys.push(newObj)
                 }
             }
