@@ -4,22 +4,13 @@ angular
 
 function listController(listFactory, $scope) {
 
-  	$scope.checkbox = [
-  		{selected: false},
-  		{selected: false},
-  		{selected: false},
-  		{selected: false},
-  		{selected: false},
-  		{selected: false}
-  	];
-
-    $scope.continents = [
-	    {name: 'AFRICA', countrys: []}, 
-	    {name: 'AMERICAS', countrys: []},
-	    {name: 'ASIA', countrys: []},
-	    {name: 'EUROPE', countrys: []},
-	    {name: 'OCEANIA', countrys: []},
-	    {name: 'POLAR', countrys: []}
+	$scope.continents = [
+	    {name: 'AFRICA', countrys: [], selected: false}, 
+	    {name: 'AMERICAS', countrys: [], selected: false},
+	    {name: 'ASIA', countrys: [], selected: false},
+	    {name: 'EUROPE', countrys: [], selected: false},
+	    {name: 'OCEANIA', countrys: [], selected: false},
+	    {name: 'POLAR', countrys: [], selected: false}
     ];
 
     listFactory.query(function (data) {
@@ -34,22 +25,25 @@ function listController(listFactory, $scope) {
         } 
     })
 
-	$scope.checkAll = function() {
-		for(var i = 0; i < $scope.checkbox.length; i++) {
-			if($scope.checkbox[i].selected) {
-				$scope.continents[i].countrys.forEach(function (obj) {
-					obj.checked = true;
-				})
-			} 
-
-			else if(!$scope.checkbox[i].selected) {
-				$scope.continents[i].countrys.forEach(function (obj) {
-					obj.checked = false;
-				})
-			}
-		}
-	}
-    
+    $scope.selectAll = function (continent) {
+        if(continent.selected) {
+            for(var i = 0; i < $scope.continents.length; i++) {
+                if($scope.continents[i].name.toLowerCase() === continent.name.toLowerCase()) {
+                    $scope.continents[i].countrys.forEach(function (elem) {
+                        elem.checked = true;
+                    })
+                }
+            }
+        } else if (!continent.selected) {
+            for(var i = 0; i < $scope.continents.length; i++) {
+                if($scope.continents[i].name.toLowerCase() === continent.name.toLowerCase()) {
+                    $scope.continents[i].countrys.forEach(function (elem) {
+                        elem.checked = false;
+                    })
+                }
+            }           
+        }
+    }
 	$scope.changeIfAllChecked = function (country) {
 
 		var continent,
