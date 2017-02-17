@@ -22,7 +22,7 @@ function listController(listFactory, $scope) {
 	    {name: 'POLAR', countrys: []}
     ];
 
-   listFactory.query(function (data) {
+    listFactory.query(function (data) {
         for(var i = 0; i < data.length; i++) {
             var obj = data[i],
                 newObj = {name: obj.name, region: obj.region, checked: false}    
@@ -32,7 +32,7 @@ function listController(listFactory, $scope) {
                 }
             }
         } 
-   })
+    })
 
 	$scope.checkAll = function() {
 		for(var i = 0; i < $scope.checkbox.length; i++) {
@@ -49,6 +49,7 @@ function listController(listFactory, $scope) {
 			}
 		}
 	}
+    
 	$scope.changeIfAllChecked = function (country) {
 
 		var continent,
