@@ -12,13 +12,13 @@
 			<input type="checkbox" name="" id="checkbox" ng-model="check">
 		</div>
 		<ul class="list-style">
-			<li ng-repeat="data in continents">
+			<li ng-repeat="continent in continents">
 				<div style="width: 150px;">
-					<input type="checkbox" class="checkbox-style" ng-model="checkbox[$index].selected" ng-click="checkAll()">
-					<h3>{{data.name}}</h3>
+					<input type="checkbox" class="checkbox-style" ng-model="continent.selected" ng-click="checkAll(continent)">
+					<h3>{{continent.name}}</h3>
 				</div>
 				<ul class="list-style">
-					<li ng-hide="check && country.checked" ng-repeat="country in data.countrys | filter:search"><input type="checkbox" ng-change="changeIfAllChecked(country)" ng-model="country.checked"> {{country.name}}</li>
+					<li ng-hide="check && country.checked" ng-repeat="country in continent.countrys | filter:search"><input type="checkbox" ng-change="changeIfAllChecked(country)" ng-model="country.checked"> {{country.name}}</li>
 				</ul>
 			</li>
 		</ul>
