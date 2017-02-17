@@ -21,7 +21,7 @@
 						<div class="continent-name" style="font-weight: bold; margin-left: 23px;">{{continent.name}}</div>
 					</span>
 				</div>
-				<div ng-repeat="country in continent.countrys">
+				<div ng-repeat="country in continent.countrys | filter:search">
 					<div class="single-country" ng-hide="check && country.checked">
 						<input type="checkbox" ng-model="country.checked" ng-change="ctrl.checkContinentIfAllChecked(country)">
 						<span style="margin-left: 10px">{{country.name}}</span>
