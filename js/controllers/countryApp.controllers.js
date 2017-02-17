@@ -31,8 +31,7 @@ function listController(listFactory, $scope) {
                     $scope.continents[j].countrys.push(newObj)
                 }
             }
-        }
-     console.log($scope.continents)   
+        } 
    })
 
 	$scope.checkAll = function() {
