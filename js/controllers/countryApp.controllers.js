@@ -61,9 +61,17 @@ angular
             }
 
             bool = continent.countrys.every(element => {
-                element.checked === true ? return true : return false
+                if(element.checked === true) {
+                    return true;
+                } else {
+                    return false;
+                }
             })
 
-            bool ? continent.selected = true : continent.selected = false;
+            if (bool) {
+                continent.selected = true;
+            } else if (!bool) {
+                continent.selected = false;
+            }
         }   
     }
