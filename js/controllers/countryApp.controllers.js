@@ -22,17 +22,19 @@ function listController(listFactory, $scope) {
 	    {name: 'POLAR', countrys: []}
     ];
 
-    listFactory.query(function (data) {
-        for(var i = 0; i < data.length; ++i) {
-            var obj = data[i];
-            var continentObj = {name: obj.name, region: obj.region, checked: false};
- 		for(var j = 0; j < $scope.continents.length; j++) {
-			if($scope.continents[j].name === continentObj.region) {
-				$scope.continents[j].countrys.push(continentObj)
-			}
-		}
+   listFactory.query(function (data) {
+        for(var i = 0; i < data.length; i++) {
+            var obj = data[i],
+                newObj = {name: obj.name, region: obj.region, checked: false}    
+            for(var j = 0; j < $scope.continents.length; j++) {
+                if($scope.continents[j].name.toLowerCase() == newObj.region.toLowerCase()) {
+
+                    $scope.continents[j].countrys.push(newObj)
+                }
             }
-    });
+        }
+     console.log($scope.continents)   
+   })
 
 	$scope.checkAll = function() {
 		for(var i = 0; i < $scope.checkbox.length; i++) {
