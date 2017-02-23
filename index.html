@@ -10,8 +10,8 @@
 			<label for="input">Seach for country</label>
 			<input type="text" class="" id="input" ng-model="search">
 			<span class="divider"></span>
-			<label for="checkbox">See checked/unchecked</label>
-			<input type="checkbox" name="" id="checkbox" ng-model="check">
+			<label for="checkbox">See checked</label>
+			<input type="checkbox" name="" id="checkbox" ng-model="checked">
 		</div>
 		<div class="" style="margin-left: 15px;">
 			<div ng-repeat="continent in ctrl.continents">
@@ -22,7 +22,7 @@
 					</span>
 				</div>
 				<div ng-repeat="country in continent.countrys | filter:search">
-					<div class="single-country" ng-hide="check && country.checked">
+					<div class="single-country" ng-hide="checked && !country.checked">
 						<input type="checkbox" ng-model="country.checked" ng-change="ctrl.checkContinentIfAllChecked(country)">
 						<span style="margin-left: 10px">{{country.name}}</span>
 					</div>
