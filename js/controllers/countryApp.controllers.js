@@ -28,22 +28,16 @@ angular
         })
 
         vm.checkAll = continent => {
-            if(continent.selected) {
-                for(let i = 0; i < vm.continents.length; i++) {
-                    if(vm.continents[i].name.toLowerCase() === continent.name.toLowerCase()) {
-                        vm.continents[i].countrys.forEach(elem => {
-                            elem.checked = true;
-                        })
-                    }
+            for(let i = 0; i < vm.continents.length; i++) {
+                if(vm.continents[i].name == continent.name && continent.selected) {
+                    vm.continents[i].countrys.forEach(elem => {
+                        elem.checked = true;
+                    })
+                } else {
+                    vm.continents[i].countrys.forEach(elem => {
+                        elem.checked = false;
+                    })
                 }
-            } else if (!continent.selected) {
-                for(let i = 0; i < vm.continents.length; i++) {
-                    if(vm.continents[i].name.toLowerCase() === continent.name.toLowerCase()) {
-                        vm.continents[i].countrys.forEach(elem => {
-                            elem.checked = false;
-                        })
-                    }
-                }           
             }
         }
 
